@@ -1,0 +1,41 @@
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URI}
+
+zuul:
+  #  ignored-services: '*'
+  routes:
+    customer: /cust/**
+    stockquote: /stockquote/**
+    authservice: /auth/**
+  ribbon:
+    eager-load:
+      enabled: false
+  sensitive-headers: Cookie,Set-Cookie
+server:
+  port: 5555
+
+security:
+  oauth2:
+    authorization:
+      check-token-access: isAuthenticated()
+    client:
+      client-id: stocktrading
+      client-secret: thisissecret
+    resource:
+      user-info-uri: ${AUTH_URI}
+
+signing:
+  key: 345345fsdgsf5345
+
+spring:
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: ${ZIPKIN_URI}
