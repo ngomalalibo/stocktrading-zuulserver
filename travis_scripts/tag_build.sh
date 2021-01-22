@@ -5,8 +5,8 @@ scp -i all-stock-key-pair.pem docker-compose.yml ubuntu@ec2-18-184-55-40.eu-cent
 scp -i all-stock-key-pair.pem travis_scripts/launch_build.sh ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
 
 #Start Kafka
-scp -i all-stock-key-pair.pem travis_scripts/start_kafka.sh ubuntu@ec2-3-124-206-1.eu-central-1.compute.amazonaws.com:.
-ssh -i "all-stock-key-pair.pem" ubuntu@ec2-3-120-98-15.eu-central-1.compute.amazonaws.com 'bash start_kafka.sh'
+scp -i -y all-stock-key-pair.pem travis_scripts/start_kafka.sh ubuntu@ec2-3-124-206-1.eu-central-1.compute.amazonaws.com:.
+ssh -i -y "all-stock-key-pair.pem" ubuntu@ec2-3-120-98-15.eu-central-1.compute.amazonaws.com 'bash start_kafka.sh'
 
 echo "Tagging build with $BUILD_NAME"
 export TARGET_URL="https://api.github.com/repos/ngomalalibo/stocktradingmicroservices/releases?access_token=$GITHUB_TOKEN"
