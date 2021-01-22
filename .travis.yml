@@ -27,7 +27,6 @@ before_install:
   - export BUILD_NAME=zuulserver-master-$(date -u "+%Y%m%d%H%M%S")
 script:
   - sh travis_scripts/tag_build.sh
-  - sh travis_scripts/start_kafka.sh
 deploy:
   provider: script
   skip_cleanup: true
