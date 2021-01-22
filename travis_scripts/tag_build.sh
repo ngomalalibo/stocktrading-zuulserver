@@ -5,7 +5,7 @@ yes | scp -i all-stock-key-pair.pem docker-compose.yml ubuntu@ec2-18-184-55-40.e
 yes | scp -i all-stock-key-pair.pem travis_scripts/launch_build.sh ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
 
 #Start Kafka
-yes | scp -i all-stock-key-pair.pem travis_scripts/start_kafka.sh ubuntu@ec2-3-124-206-1.eu-central-1.compute.amazonaws.com:.
+yes | scp -o "ConnectTimeout 3" -o "StrictHostKeyChecking no" -i all-stock-key-pair.pem travis_scripts/start_kafka.sh ubuntu@ec2-3-124-206-1.eu-central-1.compute.amazonaws.com:.
 ssh -i "all-stock-key-pair.pem" ubuntu@ec2-3-120-98-15.eu-central-1.compute.amazonaws.com 'bash start_kafka.sh'
 
 echo "Tagging build with $BUILD_NAME"
