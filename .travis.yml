@@ -20,7 +20,9 @@ env:
     - secure: LlC2yZFL8K6gprM+UV6GVjIV6Ghit6idQO+bvQg1xpnZ2UdL9toU2tnLM1tjkwDr1nP2rzbkiqK8Z4WDsKO/S1vh3vW0YXpTNkM18JoCBMAu3yUhTcxmL6TYhxD49/zI7tL5oPievq5/KuSl7jWo6f2/Wkp756W1jgq3t28ERfeU4Fa4Rzj3ClE213iWbIbn0J0bNLnzKpAfZIVCCBZ4zJ+Nbq7uJF+onXZ5WYKja4vn035jhuf8oahuqOO4ltjPwIJgkrTDTxd+gxfv6kRo9BdyJuPjvlLUj558ZhmsVNvpiQxAm4FdFzMcQc+AwuGfZaRYRIMk2ICAcPIR4D895EtUnoLBlGvfxy0LBvjk1z5ZOHQpbXQ64Xxv5TZMVnqYUhEiBbCShTrBS1lR3+ITLms6Pt7RxP8szEhWxjLdi5egprEab/ZW2IvEoyNGxrc9V8GGFXv3sQklzJ9kOWNVWOl6w4J2O9Xmskq6S8Ruu7r167mDGHDVwTtNw4iW0AxsS4rOAM8/h8Ryym6p++i76CHhBEZ6LcVJgZRxaspimPjzkoLDsHiCKPJo3WyaZ0+xNxOlqgKJIa4dSJ9AZ9anqyJs9kt7uELgsM6dUzE32J97WUUq7jYoLvay6MZxA9nlaPbgfSMcfauSMk5fU+RKhHCSEUdG9tG6GmLSxNfVFCI=
     - secure: NO6hqdfulnCjw16XbswI8gBY05qTtHXI75md9BvimNBMdPtfzB1MGiMgUAS6zTmddL/5oLaW2gTUAHzDcdSG1+yaIjPwmrt8LFsVxJJ8enVSd/ulmKwEid/boeFdHnID7Mma2urSrPFVyrTwGVicqi52YwoNdrx9K4uebQggmdT/GnKvZir8tjob3mXdfOHUZ1Yk+IzHG928UphNyRyS6wt7Z+5m9F0SIXY15af7XOGhm02ybIYgurSaBA4GERwxLfusrQ2nOZBNb9SN6US5lHHGoclZYm70sb6MOXnlO/TY9mk1mrz57bAfsXEBkGeKCDqewuG7nBA3aTrLJ3nCH+G1xbjESToFfIq5vMnqvJmqxDiBAjsOzNsWzdKNbygrSXQBu4tQL7MVZ0TO0cHdrP4MNMja/EWyEjJP3Pw884bHsuFygZK8fIlMAFT7u5qDw+Ne2P0wIP51IGIBnDGSTSfE41maMzZtliap7LF9w6lIHW7kl/wrAXBx+uZg+lg5ztkogMkgikdFz6zd6/19gGuFKS2NIxqXwwM0HtRSNQj+5BqR18yw+Qh/WPVgBE3BwVyD79gBy6gT/5L7lVJWWynwdtofnZQHjXcae6tiFGgvLPUjthN+2vS12aa9QgooGXh0ASi864nD42auzAt9DK2r76WJI2ZsfZBJSlK2rnw=
 addons:
-  ssh_known_hosts: ec2-18-184-55-40.eu-central-1.compute.amazonaws.com
+  ssh_known_hosts:
+    - ec2-18-184-55-40.eu-central-1.compute.amazonaws.com
+    - ec2-3-120-98-15.eu-central-1.compute.amazonaws.com
 before_install:
   - chmod +x mvnw
   - mvn clean install
@@ -30,7 +32,6 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -i "all-stock-key-pair.pem" ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com
-    'bash launch_build.sh'
+  script: ssh -i "all-stock-key-pair.pem" ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com 'bash launch_build.sh'
   on:
     branch: master
