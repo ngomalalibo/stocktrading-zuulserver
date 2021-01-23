@@ -1,8 +1,8 @@
 sudo chmod 600 all-stock-key-pair.pem
 sudo chmod 755 ~/
 echo "Copying files to AWS instance"
-yes | scp -i all-stock-key-pair.pem docker-compose.yml ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
-yes | scp -i all-stock-key-pair.pem travis_scripts/launch_build.sh ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
+scp -i all-stock-key-pair.pem docker-compose.yml ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
+scp -i all-stock-key-pair.pem travis_scripts/launch_build.sh ubuntu@ec2-18-184-55-40.eu-central-1.compute.amazonaws.com:.
 
 #Start Kafka
 #yes | scp -i all-stock-key-pair.pem travis_scripts/start_kafka.sh ubuntu@ec2-3-120-98-15.eu-central-1.compute.amazonaws.com:.
