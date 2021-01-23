@@ -1,7 +1,7 @@
 source kafkadir.sh
 kafkadir
 pwd
-kafka-server-stop.sh
-zookeeper-server-stop.sh
-nohup zookeeper-server-start.sh config/zookeeper.properties &
-nohup kafka-server-start.sh config/server.properties &
+bin/kafka-server-stop.sh
+bin/zookeeper-server-stop.sh
+nohup bin/zookeeper-server-start.sh config/zookeeper.properties &
+nohup bin/kafka-server-start.sh config/server.properties &
